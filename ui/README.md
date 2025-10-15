@@ -11,10 +11,10 @@ Chose Babel as the React compiler due to its portability to older browsers and s
 
 ### Building and Running
 1. Install UI dependencies
-```
-cd ui
-npm install
-```
+    ```
+    cd ui
+    npm install
+    ```
 2. Run application using ```npx vite```
 3. Open the application using the URL: ```http://localhost:5173/```
 
@@ -27,14 +27,14 @@ Set up automatic linting in your IDE:
 1. In the VS Code marketplace, install [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) and [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode).
 
 2. Make sure that the **Code Actions on Save** configuraiton in **Settings** is configured as such:
-```js
-"editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true // automatically fix basic lint after file save
-},
-...
-"eslint.validate": [
-    "typescript",
-    "typescriptreact"
-]
-...
-```
+    ```js
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true // automatically fix basic lint after file save
+    },
+    ...
+    "eslint.validate": [
+        "typescript",
+        "typescriptreact"
+    ]
+    ...
+    ```

@@ -46,7 +46,16 @@ brew services start postgresql@15
 
 **Other platforms:** Download and install from [PostgreSQL official website](https://www.postgresql.org/download/)
 
-### 2. Create Database
+### 2. Create ```postgres``` user
+1. Connect to postgres from your command line:
+
+    ```psql postgres```
+
+2. Create postgres role:
+
+    ```CREATE ROLE postgres WITH SUPERUSER LOGIN PASSWORD 'postgres';```
+
+### 3. Create Database
 
 Connect to PostgreSQL and create the database:
 
@@ -61,20 +70,6 @@ CREATE DATABASE hospital_management;
 \c hospital_management
 ```
 
-### 3. Run Schema Script
+### 4. Applying the database schema
 
-Execute the schema script to create tables and views:
-
-```bash
-# From the database directory
-psql -U postgres -d hospital_management -f schema.sql
-```
-
-### 4. Verify Installation
-
-Check that tables were created successfully:
-
-```sql
--- List all tables
-\dt
-```
+The database schema will be applied using Django's ORM tools. We will wait until the backend is set up.
