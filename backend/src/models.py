@@ -5,18 +5,16 @@ from django.core.exceptions import ValidationError
 class Patient(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.TextField()
-    mrn = models.TextField(unique=True)
+    dob = models.DateField(null=True, blank=True, help_text="Date of birth")
 
     class Meta:
         db_table = 'patient'
 
     def clean(self):
-        """Custom validation to ensure name and MRN are not empty or whitespace."""
+        """Custom validation to ensure name is not empty or whitespace."""
         super().clean()
         if not self.name or not self.name.strip():
             raise ValidationError({'name': 'Name cannot be empty or contain only whitespace.'})
-        if not self.mrn or not self.mrn.strip():
-            raise ValidationError({'mrn': 'MRN cannot be empty or contain only whitespace.'})
 
     def save(self, *args, **kwargs):
         """Override save to call clean method for validation."""
@@ -24,7 +22,7 @@ class Patient(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"{self.name} (MRN: {self.mrn})"
+        return self.name
 
 
 class Bed(models.Model):
